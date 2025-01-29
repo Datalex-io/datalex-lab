@@ -1,0 +1,6 @@
+environment     = "run"
+storage_account_name = ""
+service_plan_name = ""
+azurerm_linux_function_app_name = ""
+azurerm_application_insights_name = ""
+azure_key_vault_name = ""

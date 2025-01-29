@@ -1,0 +1,6 @@
+environment     = "dev"
+storage_account_name = "frcemiddlewarepltdhf0"
+service_plan_name = "frce-middlewareplt-dhf-0"
+azurerm_linux_function_app_name = "frce-middlewareplt-dhf-0"
+azurerm_application_insights_name = "frce-middlewareplt-dhf-0"
+azure_key_vault_name = "frcemiddlewarepltdhf0"
