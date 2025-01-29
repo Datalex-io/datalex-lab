@@ -64,7 +64,7 @@ resource "azurerm_linux_function_app" "linux_python_linux_function_app" {
     }
 }
 
-# create azure vault
+# Create Azure Key Vault
 resource "azurerm_key_vault" "middleware_vault" {
   name                        = "${var.environment}${var.azure_key_vault_name}"
   resource_group_name         = data.azurerm_resource_group.resource_group_engineering.name
@@ -77,7 +77,7 @@ resource "azurerm_key_vault" "middleware_vault" {
 
   sku_name = "standard"
 
-  # add Datahub administrator
+  # Add Central Datahub's administrators
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azuread_group.datahub_administrator.object_id
@@ -94,7 +94,7 @@ resource "azurerm_key_vault" "middleware_vault" {
       "Backup", "Delete", "DeleteSAS", "Get", "GetSAS", "List", "ListSAS", "Purge", "Recover", "RegenerateKey", "Restore", "Set", "SetSAS", "Update"
     ]
   }
-  # add Azure Function
+  # Add Azure Function MSI
   access_policy {
     tenant_id = "${azurerm_linux_function_app.linux_python_linux_function_app.identity.0.tenant_id}"
     object_id = "${azurerm_linux_function_app.linux_python_linux_function_app.identity.0.principal_id}"
